@@ -249,6 +249,7 @@ class PoolHandler(BaseHandler):
     def worker_count(self):
         return self.__worker_count
 
+
 class ThreadPoolHandler(PoolHandler):
     def __init__(self, *args, **kwargs):
         """
