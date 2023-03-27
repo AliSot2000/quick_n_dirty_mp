@@ -396,7 +396,6 @@ class ProcessHandler(ReusingHandler):
         self.com_pipe[w_id] = parent
         self.last_interaction[w_id] = datetime.datetime.now()
 
-
     def stop(self, waiting_timeout: int = 1):
         """
         Stop the processes and the communication pipes.
