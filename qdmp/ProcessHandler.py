@@ -105,7 +105,6 @@ class ReusingHandler(BaseHandler):
     # for logging and warnings
     __returned_task_queue: bool = False
 
-
     def __init__(self, target_fn: Callable, **kwargs):
         """
         Initializes the Reusing Handler.
