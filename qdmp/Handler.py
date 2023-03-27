@@ -4,19 +4,38 @@ from concurrent.futures import Future
 from typing import Callable, Any, List
 import logging
 import os
+import sys
 
 
 @dataclass
 class ProcessingException:
+    """
+    Returned object in case the ProcessHandler runs into an exceptions.
+
+    - Exception - is the exception object generated in the Process
+    - Traceback - contains a string of the stack trace of the exception for better understanding of the cause of teh
+      exception.
+    - Arguments - that were supplied to the process that caused the error.
+    """
     exception: Exception
     traceback: str
-    arguments: dict
+    arguments: Any
 
 
 @dataclass
 class PoolFuture:
+    """
+    Wrapper around the normal Future object produced by the concurrent.futures.
+
+    - future - original future
+    - arguments - that are being processed by the given future
+    - submit_time - time the future was submitted
+    - first_running_time - time the future was seen for the first time in the running state instead of the pending.
+    - restart - this future is marked for restart. the result handler should discard the result and ignore the fact that
+      it is canceled.
+    """
     future: Future
-    arguments: dict
+    arguments: Any
     submit_time: datetime.datetime
     first_running_time: datetime.datetime = None
     restart: bool = False
@@ -24,7 +43,17 @@ class PoolFuture:
 
 @dataclass
 class PoolFutureException:
-    arguments: dict
+    """
+    Returned object in case the PoolHandler runs into an exception.
+
+    Since we don't have a general try, except block, we cannot generate a traceback (or at least I haven't figured out
+    how to do so yet).
+
+    So we have a smaller version of the same Exception:
+    arguments - the arguments that caused the exception
+    exception - the exception raised on the call.
+    """
+    arguments: Any
     exception: BaseException = None
 
 
@@ -85,7 +114,7 @@ class BaseHandler:
         else:
             self.prepare_logging(debug=self.debug, name=logging_name)
 
-    def prepare_logging(self, name: str, console_level: int = logging.DEBUG, debug: bool = False):
+    def prepare_logging(self, name: str, console_level: int = logging.WARNING, debug: bool = False):
         """
         Set's up logging for the class.
 
