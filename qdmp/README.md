@@ -13,7 +13,7 @@ of the map function (ML Applications for example).
 Furthermore, the ability to submit and retrieve results in a stream like fashion allows for better integration in 
 asynchronous workloads where a multiple child nodes receive tasks from a master at random intervals.
 
-The package is designed around the `concurrent.Futures` Executor but also has its own implementation of a Pool.
+The package is designed around the `concurrent.futures` Executor but also has its own implementation of a Pool.
 The Pool can be of use if you have a part of the computation that can be reused as the `Processes` live on whereas the 
 `Executor` kills the `Processes` afterwards. Though it should be noted that using this pool will only result in marginal 
 improvements because the pool has no information about the relation of the precomputed data. To achieve even better 
