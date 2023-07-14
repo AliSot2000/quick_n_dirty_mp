@@ -9,7 +9,7 @@ import sys
 import logging
 import os
 import warnings
-from qdmp.Handler import ProcessingException, BaseHandler
+from src.qdmp import ProcessingException, BaseHandler
 
 
 # TODO TEST!!!

@@ -1,6 +1,6 @@
 import math
 from typing import Any, Tuple, Union
-from qdmp.Handler import ProcessingException, PoolFutureException
+from src.qdmp import ProcessingException, PoolFutureException
 
 
 # TODO instead of storage globals?
