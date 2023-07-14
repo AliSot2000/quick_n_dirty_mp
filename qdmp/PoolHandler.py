@@ -199,7 +199,7 @@ class PoolHandler(BaseHandler):
         Compared to the ProcessHandler, the PoolHandler doesn't facilitate the automatic restarting of a given task,
         since a process is taking care of multiple tasks whereas a process in the pool only takes care of a single task
         and therefore the chances are higher that it will fail again. It is left to the programmer to make sure the
-        tasks he's cancelling the right tasks and also resubmitting the correct arguments.
+        tasks he's cancelling is the right tasks and so is resubmitting the correct arguments.
 
         :param timeout: number of seconds a task may run max for.
         :return:
