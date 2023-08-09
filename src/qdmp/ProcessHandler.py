@@ -9,11 +9,13 @@ import sys
 import logging
 import os
 import warnings
-from src.qdmp import ProcessingException, BaseHandler
+from qdmp.Handler import ProcessingException, BaseHandler
 
 
 # TODO TEST!!!
-Commands = Enum("Commands", ["RESET_SANITY_TIMEOUT", "TERMINATE"])
+class Commands(Enum):
+    RESET_SANITY_TIMEOUT = 0
+    TERMINATE = 1
 
 
 def worker(w_id: int, input_queue: mp.Queue, output_queue: mp.Queue, com: Connection, target_fn: Callable,
@@ -310,7 +312,7 @@ class ReusingHandler(BaseHandler):
     @property
     def argument_queue(self):
         """
-        It is a valid possible to get the queue that sends arguments to the child processes.
+        It is a valid possibility to get the queue that sends arguments to the child processes.
         This function is used to emit a warning if you also have a validation function for the arguments.
         :return:
         """
