@@ -2,7 +2,7 @@ from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, TimeoutE
 import datetime
 from typing import Callable, Any, List, Tuple, Union
 import multiprocessing as mp
-from src.qdmp import PoolFuture, PoolFutureException, BaseHandler
+from qdmp.Handler import PoolFuture, PoolFutureException, BaseHandler
 
 
 class PoolHandler(BaseHandler):
