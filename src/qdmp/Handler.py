@@ -95,21 +95,27 @@ class BaseHandler:
 
         logging_name = f"{self.__class__.__name__}"
         if "logging_name" in kwargs:
+            assert type(kwargs["logging_name"]) is str, "logging_name must be a string"
             logging_name = kwargs["logging_name"]
 
         if "debug" in kwargs:
+            assert type(kwargs["debug"]) is bool, "debug must be a boolean"
             self.debug = kwargs["debug"]
 
         if "validate_args_fn" in kwargs:
+            assert callable(kwargs["validate_args_fn"]), "validate_args_fn must be callable"
             self.validate_args = kwargs["validate_args_fn"]
 
         if "validate_result_fn" in kwargs:
+            assert callable(kwargs["validate_result_fn"]), "validate_result_fn must be callable"
             self.validate_result = kwargs["validate_result_fn"]
 
         if "handle_error_fn" in kwargs:
+            assert callable(kwargs["handle_error_fn"]), "handle_error_fn must be callable"
             self.handle_error = kwargs["handle_error_fn"]
 
         if "console_level" in kwargs:
+            assert type(kwargs["console_level"]) is int, "console_level must be an integer"
             self.prepare_logging(kwargs["console_level"], self.debug, logging_name)
         else:
             self.prepare_logging(debug=self.debug, name=logging_name)
