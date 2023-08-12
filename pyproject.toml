@@ -1,0 +1,27 @@
+[project]
+name = "qdmp"
+readme = "README.md"
+version = "0.1.0"
+description = "Boilerplate code for asynchronous multiprocessing."
+requires-python = ">=3.8"
+license = {file = "LICENSE.txt"}
+keywords = ['python', 'multiprocessing', 'asynchronous', 'ProcessPoolExecutor', 'ThreadPoolExecutor',
+              'Machine Learning', 'producer-consumer', 'embedded']
+authors = [
+    {name = "Alexander Sotoudeh", email="alisot200@gmail.com"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    'Intended Audience :: Developers',
+    "Programming Language :: Python :: 3",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    'License :: OSI Approved :: MIT License',   # Again, pick a license
+    'Programming Language :: Python :: 3.8',
+  ]
+
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
